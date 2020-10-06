@@ -32,18 +32,38 @@ class Main(QMainWindow , MainUI):
 
 #to handel all the buttons in the application
     def Handel_All_Buttons(self):
-        self.pushButton_3.clicked.connect(self.Add_New_Client)
+        self.pushButton_3.clicked.connect(self.Click_Add_New_Client_Main_Screen)
         self.pushButton.clicked.connect(self.Open_Main_Win)
+        self.pushButton_6.clicked.connect(self.Open_Main_Win)
+        self.pushButton_33.clicked.connect(self.Click_Add_New_Client)
 ########################################
     ######### Clients #################
     def Show_All_Clients(self):
        pass
 
+    def Click_Add_New_Client(self):
+        clint_name = self.lineEdit_24.text()
+        clint_email =self.lineEdit_25.text()
+        clint_phone = self.lineEdit_20.text()
+        clint_start_date = self.dateTimeEdit.dateTime()
+        clint_date_of_birth = self.dateEdit.date()
+        clint_address = self.lineEdit_22.text()
+        print(clint_start_date,clint_date_of_birth)
+        #self.cur.execute( '''
 
-    def Add_New_Client(self):
+        #            INSERT INTO person(name , email , phone ,TrainingStartDate,Address,birthday)
+        #            VALUES (%s , %s , %s , %s , %s , %s )
+        #        ''', (clint_name, clint_email, clint_phone,clint_start_date,clint_date_of_birth,clint_address) )
+        #self.db.commit()
+        #self.db.close()
+        self.statusBar().showMessage( 'New CLient Added' )
         self.tabWidget.setCurrentIndex(1)
-        self.tabWidget_6.setCurrentIndex(0)
-        self.tabWidget_7.setCurrentIndex(0)
+        self.tabWidget_6.setCurrentIndex(1)
+
+    def Click_Add_New_Client_Main_Screen(self):
+        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget_6.setCurrentIndex(1)
+        #self.tabWidget_7.setCurrentIndex(0)
     def Open_Main_Win(self):
         self.tabWidget.setCurrentIndex(0)
 
